@@ -7,7 +7,7 @@ const ClienteController = require('../controllers/ClienteController')
 router.get('/add', ClienteController.newCliente)
 router.post('/add', ClienteController.newClienteSave)
 
-router.get('/edit', ClienteController.updateViewCliente)
+router.get('/edit/:id', ClienteController.updateViewCliente)
 router.post('/edit', ClienteController.updateCliente)
 
 router.post('/remove', ClienteController.removeCliente)

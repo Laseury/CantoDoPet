@@ -8,7 +8,7 @@
 
 
 <ul class="cliente">
-  {{#each cliente}}
+  {{#each clientes}}
   <li>
   <div>
     <div class="ajuste">
@@ -16,7 +16,7 @@
         <label for="">Nome: {{this.nome}}</label>
       </div>
       <div>
-        <label for="">Sobrenome: {{this.Sobrenome}}</label>
+        <label for="">Sobrenome: {{this.sobrenome}}</label>
       </div>
       <div>
         <label for="">Data de Nascimento: {{this.data_nascimento}}</label>
@@ -25,14 +25,14 @@
         <label for="">CPF: {{this.cpf}}</label>
       </div>
       <div>
-        <a href="/users/edit/{{this.id}}">
-          Editar
+        <a href="/clientes/edit/{{this.id}}">
+          Editar Cliente
         </a>
       </div>
       <div>
-        <form action="/users/remove" method="post">
+        <form action="/clientes/remove" method="post">
           <input type="hidden" name="id" value="{{this.id}}">
-          <button type="submit" value="Remover" class="btn-inicial">
+          <button type="submit" value="Remover" class="btn-inicial" id="btn-excluir" >
             <i>Excluir</i>
           </button>
         </form>
