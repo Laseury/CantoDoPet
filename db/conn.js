@@ -7,8 +7,8 @@ ROOT = process.env.BD_ROOT
 PASS = process.env.BD_PASS
 
 
-const sequelize = new Sequelize(DATABASE, ROOT, PASS, {
-  host: HOST,
+const sequelize = new Sequelize('petShop', 'root', 'petshop123', {
+  host: localhost,
   dialect: 'mysql',
 })
 
