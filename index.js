@@ -11,7 +11,6 @@ const userModel = require('./model/Cliente')
 const hbs = exphbs.create({
   partialsDir: ["views/partials"]
 })
-
 //configure template handlebars
 app.engine('handlebars', hbs.engine)
 app.set('view engine', 'handlebars')
