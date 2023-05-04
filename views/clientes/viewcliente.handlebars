@@ -1,0 +1,49 @@
+<div class="title">
+  <h1>Todos os clientes</h1>
+  <div> 
+    <a href="/clientes" class="btn">Home</a>
+    <a href="/clientes/add" class="btn">Cadastrar um novo cliente</a>
+  </div>
+</div>
+
+
+<ul class="cliente">
+  {{#each cliente}}
+  <li>
+  <div>
+    <div class="ajuste">
+      <div>
+        <label for="">Nome: {{this.nome}}</label>
+      </div>
+      <div>
+        <label for="">Sobrenome: {{this.Sobrenome}}</label>
+      </div>
+      <div>
+        <label for="">Data de Nascimento: {{this.data_nascimento}}</label>
+      </div>
+      <div>
+        <label for="">CPF: {{this.cpf}}</label>
+      </div>
+      <div>
+        <a href="/users/edit/{{this.id}}">
+          Editar
+        </a>
+      </div>
+      <div>
+        <form action="/users/remove" method="post">
+          <input type="hidden" name="id" value="{{this.id}}">
+          <button type="submit" value="Remover" class="btn-inicial">
+            <i>Excluir</i>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  </li>
+
+  {{/each}}
+</ul>
+
+
+
+</div>

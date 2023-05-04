@@ -3,10 +3,10 @@ const app = express()
 const port = 3000
 
 const exphbs = require('express-handlebars')
-const User = require('./routes/userRouter')
+const cliente = require('./routes/clienteRouter')
 
 const conn = require('./db/conn')
-const userModel = require('./model/User')
+const userModel = require('./model/Cliente')
 
 const hbs = exphbs.create({
   partialsDir: ["views/partials"]
@@ -28,7 +28,7 @@ app.use(express.json())
 app.use(express.static('public'))
 
 //adicionando rota users
-app.use('/users', User)
+app.use('/clientes', cliente)
 
 conn.sync().then(() => {
   app.listen(port)
