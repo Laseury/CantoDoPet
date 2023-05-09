@@ -59,37 +59,10 @@ module.exports = class ClienteController {
     const id = req.body.id
 
     await Cliente.destroy({ where: { id: id } })
-      .then(res.redirect('/clientes/allCliente'))
+      .then(
+        res.redirect('/clientes/allCliente'))
       .catch((err) => {
         console.log(err)
       })
-      return this.removeCliente
   }
-  
-  /*static async removeCliente(req, res) {
-    const id = req.body.id
-    
-    const confirmDelete = confirm("Tem certeza que deseja excluir este cliente?")
-  
-    if (confirmDelete) {
-      await Cliente.destroy({ where: { id: id } })
-        .then(() => {
-          res.redirect('/clientes/allCliente')
-        })
-        .catch((err) => {
-          console.log(err)
-        })
-    } else {
-      // Se o usuário cancelar a exclusão, redirecione-o para a página de clientes
-      res.redirect('/clientes/allCliente')
-    }
-  }*/
 }
-
-/*const btnExcluir = document.getElementById('btn-excluir');
-btnExcluir.addEventListener('click', () => {
-  const confirmacao = confirm('Tem certeza que deseja excluir?');
-  if (confirmacao) {
-   
-  }
-});*/
