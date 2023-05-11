@@ -1,7 +1,7 @@
 <script>
-  function deleteModal(clienteId){
-    let campoId = document.getElementById("clienteId");
-    campoId.value = clienteId;
+  function deleteModal(petId){
+    let campoId = document.getElementById("petId");
+    campoId.value = petId;
     $("#deleteModal").modal("show");
   }
 
@@ -9,9 +9,8 @@
     $("#deleteModal").modal("hide");
   }
 </script>
-
 <div class=" text-center header">
-  <h1 class="text-center header-text">Todos os Clientes</h1>
+  <h1 class="text-center header-text">Todos os Pets</h1>
 </div>
 
 <div class="espaco tabela">
@@ -19,22 +18,28 @@
     <thead>
       <tr>
         <th scope="col">Nome</th>
-        <th scope="col">Sobrenome</th>
+        <th scope="col">Espécie</th>
+        <th scope="col">Raça</th>
         <th scope="col">Nascimento</th>
-        <th scope="col">CPF</th>
+        <th scope="col">Cor</th>
+        <th scope="col">Peso</th>
+        <th scope="col">Editar</th>
+        <th scope="col">Deletar</th>
       </tr>
     </thead>
-    {{#each clientes}}
+    {{#each pets}}
     <tbody>
       <tr>
         <td>{{this.nome}}</td>
-        <td>{{this.sobrenome}}</td>
-        <td>{{this.data_nascimento}}</td>
-        <td>{{this.cpf}}</td>
-        <td><a href="/clientes/edit/{{this.id}}">{{> edit_cliente}}</a></td>
+        <td>{{this.especie}}</td>
+        <td>{{this.raça}}</td>
+        <td>{{this.nascimento}}</td>
+        <td>{{this.cor}}</td>
+        <td>{{this.peso}}</td>
+        <td><a href="/pets/edit/{{this.id}}">{{> edit_pet}}</a></td>
         <td>
-            <button type="button" onclick="deleteModal({{this.id}})">
-              {{> del_cliente}}
+          <button type="button" onclick="deleteModal({{this.id}})">
+              {{> del_pet}}
             </button>
         </td>
       </tr>
@@ -42,9 +47,8 @@
     </tbody>
   </table>
 </div>
-
-<form action="/clientes/remove" method="post">
-  <input type="hidden" name="id" id="clienteId">
+<form action="/pets/remove" method="post">
+  <input type="hidden" name="id" id="petId">
   <div class="modal fade" tabindex="-1" role="dialog" id="deleteModal">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -55,7 +59,7 @@
           </button>
         </div>
         <div class="modal-body">
-          <p>Deseja realmente excluir esse cliente?</p>
+          <p>Deseja realmente excluir esse pet?</p>
         </div>
         <div class="modal-footer">
           <button type="submit" class="btn btn-primary">Sim, eu tenho!</button>
