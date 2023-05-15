@@ -3,7 +3,7 @@ const Colaborador = require('../model/Colaborador')
 module.exports = class ColaboradorController {
     static newColaborador(req, res) {
         res.render('colaborador/colaboradorForm')
-    }c
+    }
 
     static async newColaboradorSave(req, res) {
         const colaborador = {
