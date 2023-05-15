@@ -12,7 +12,7 @@ module.exports = class ColaboradorController {
             data_nascimento: req.body.dataNascimento,
             cpf: req.body.cpf,
             funcao: req.body.funcao,
-            usuario: req.body.usuario,
+            login: req.body.login,
             senha: req.body.senha
         }
 
@@ -29,5 +29,15 @@ module.exports = class ColaboradorController {
         const colaborador = await Colaborador.findAll({ raw: true })
         res.render('colaborador/viewColaborador', { colaborador })
     }
+    static async removeColaborador(req, res) {
+        const id = req.body.id
+    
+        await Colaborador.destroy({ where: { id: id } })
+          .then(
+            res.redirect('/colaborador/allColaborador'))
+          .catch((err) => {
+            console.log(err)
+          })
+      }
 }
 

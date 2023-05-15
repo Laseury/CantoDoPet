@@ -46,7 +46,7 @@ app.use('/pets', Pet)
 //adicionando rota users
 app.use('/clientes', cliente)
 //adcionando a rota Funcionario
-app.use('/colaboradores', Colaborador)
+app.use('/colaborador', Colaborador)
 
 
 
