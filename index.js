@@ -60,3 +60,5 @@ conn.sync().then(() => {
 .catch((err) => {
   console.log(err)
 })
+
+//teste
