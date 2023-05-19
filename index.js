@@ -36,7 +36,7 @@ app.use(
 )
 app.use(express.json())
 
-//adicionando css
+//adicionando css e arquivos estaticos em geral
 app.use(express.static('public'))
 
 
