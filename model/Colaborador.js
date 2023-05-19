@@ -1,7 +1,7 @@
 const { Datatypes, DataTypes } = require('sequelize')
 const db = require('../db/conn')
 
-const Funcionario = db.define('Funcionario', {
+const Colaborador = db.define('Colaborador', {
     nome: {
         type: DataTypes.STRING,
         required: true
@@ -32,4 +32,4 @@ const Funcionario = db.define('Funcionario', {
     }
 })
     
-module.exports = Funcionario
+module.exports = Colaborador
