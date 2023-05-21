@@ -12,7 +12,7 @@ module.exports = class ColaboradorController {
             data_nascimento: req.body.dataNascimento,
             cpf: req.body.cpf,
             funcao: req.body.funcao,
-            usuario: req.body.usuario,
+            login: req.body.login,
             senha: req.body.senha
         }
 
@@ -29,5 +29,43 @@ module.exports = class ColaboradorController {
         const colaborador = await Colaborador.findAll({ raw: true })
         res.render('colaborador/viewColaborador', { colaborador })
     }
+
+    static async updateViewColaborador(req, res) {
+      const id = req.params.id
+      const colaborador = await Colaborador.findOne({ where: { id: id }, raw: true })
+      res.render('colaborador/editColaborador', { colaborador })
+    }
+
+    static async updateColaborador(req, res) {
+      const id = req.body.id
+      const colaborador = {
+          nome: req.body.nome,
+          sobrenome: req.body.sobrenome,
+          data_nascimento: req.body.dataNascimento,
+          cpf: req.body.cpf,
+          funcao: req.body.funcao,
+          login: req.body.login,
+          senha: req.body.senha
+      }
+      
+      await Colaborador.update(colaborador, { where: { id: id } })
+        .then(res.redirect('/colaborador/allColaborador'))
+        .catch((err) => {
+          console.log(err)
+        })
+    }
+
+    static async removeColaborador(req, res) {
+        const id = req.body.id
+    
+        await Colaborador.destroy({ where: { id: id } })
+          .then(
+            res.redirect('/colaborador/allColaborador'))
+          .catch((err) => {
+            console.log(err)
+          })
+      }
+
+      
 }
 

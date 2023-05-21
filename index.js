@@ -10,12 +10,12 @@ const conn = require('./db/conn')
 
 //Importação das Rotas
 const cliente = require('./routes/clienteRouter')
-const usershop = require('./routes/userRouter')
+const usershop = require('./routes/router')
 const Pet = require('./routes/petRouter')
 const Colaborador = require('./routes/colaboradorRouter')
 
 //Importação dos Models
-const userModel = require('./model/Cliente')
+
 const petModel = require('./model/Pets')
 const clienteModel = require('./model/Cliente')
 const funcionarioRouter = require('./model/Colaborador')
@@ -36,12 +36,23 @@ app.use(
 )
 app.use(express.json())
 
-//adicionando css
+//adicionando css e arquivos estaticos em geral
 app.use(express.static('public'))
 
+
+//adicionando rota Pets
+app.use('/petshop', usershop)
+app.use('/pets', Pet)
 //adicionando rota users
 app.use('/clientes', cliente)
+//adcionando a rota Funcionario
+app.use('/colaborador', Colaborador)
 
+
+
+app.get('/', (req, res) => {
+  res.render('petshop/home')
+})
 conn.sync().then(() => {
   app.listen(port)
   console.log('Servidor Inicializado')
@@ -49,3 +60,5 @@ conn.sync().then(() => {
 .catch((err) => {
   console.log(err)
 })
+
+//teste

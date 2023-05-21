@@ -1,0 +1,74 @@
+<script>
+  function deleteModal(clienteId){
+    let campoId = document.getElementById("clienteId");
+    campoId.value = clienteId;
+    $("#deleteModal").modal("show");
+  }
+
+  function ocultaModa(){
+    $("#deleteModal").modal("hide");
+  }
+</script>
+<h1>Todos os Colaboradores</h1>
+
+<div class="tabelaColaborador">
+    <table class="table table-dark table-sm">
+        
+            <thead class="thead-light">
+                <tr class="test-light">
+                <th scope="col">#</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Sobrenome</th>
+                <th scope="col">Data de Nascimento</th>
+                <th scope="col">Função</th>
+                <th scope="col">Usuario</th>
+                <th scope="col">Senha</th>
+                <th scope="col">Actions</th>
+                </tr>
+            </thead>
+        {{#each colaborador}}   
+            <tbody>
+                <tr>
+                <th scope="row">{{this.id}}</th>
+                <td>{{this.nome}}</td>
+                <td>{{this.sobrenome}}</td>
+                <td>{{this.data_nascimento}}</td>
+                <td>{{this.funcao}}</td>
+                <td>{{this.login}}</td>
+                <td>{{this.senha}}</td>
+
+                <td class="text-end">
+                        <a href="/colaborador/edit/{{this.id}}" type="button" class="btn btn-light btn-small"><i class="bi bi-pencil"></i>Editar</a>
+                         <button type="button" onclick="deleteModal({{this.id}})">
+                         {{> del_colaborador}}
+                         </button>
+                    </td>
+                </tr>      
+            
+        {{/each}} 
+        </tbody>
+    </table>
+
+</div>
+<form action="/colaborador/remove" method="post">
+  <input type="hidden" name="id" id="clienteId">
+  <div class="modal fade" tabindex="-1" role="dialog" id="deleteModal">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Atenção</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="ocultaModa()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Deseja realmente excluir esse usuario?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Sim, eu tenho!</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="ocultaModa()">Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
