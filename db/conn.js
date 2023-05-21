@@ -9,7 +9,7 @@ const {Sequelize} = require('sequelize')
 
 
 //Passar o nome do banco, usuario e senha.
-const sequelize = new Sequelize('petshop', 'root', '',{
+const sequelize = new Sequelize('petshop', 'root', '12345678',{
     host: 'localhost',
 
     //No dialect iremos dizer qual será o banco de dados que será utilizado
