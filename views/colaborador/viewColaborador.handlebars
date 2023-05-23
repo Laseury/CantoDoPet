@@ -9,21 +9,25 @@
     $("#deleteModal").modal("hide");
   }
 </script>
-<h1>Todos os Colaboradores</h1>
+<div class=" text-center header">
+  <h1 class="text-center header-text">Todos os Colaboradores</h1>
+</div>
+
 
 <div class="tabelaColaborador">
-    <table class="table table-dark table-sm">
+    <table class="table table-white table-sm">
         
             <thead class="thead-light">
                 <tr class="test-light">
-                <th scope="col">#</th>
+                <th scope="col">ID</th>
                 <th scope="col">Nome</th>
                 <th scope="col">Sobrenome</th>
                 <th scope="col">Data de Nascimento</th>
                 <th scope="col">Função</th>
                 <th scope="col">Usuario</th>
                 <th scope="col">Senha</th>
-                <th scope="col">Actions</th>
+                <th scope="col">Editar</th>
+                <th scope="col">Excluir</th>
                 </tr>
             </thead>
         {{#each colaborador}}   
@@ -36,13 +40,14 @@
                 <td>{{this.funcao}}</td>
                 <td>{{this.login}}</td>
                 <td>{{this.senha}}</td>
-
-                <td class="text-end">
-                        <a href="/colaborador/edit/{{this.id}}" type="button" class="btn btn-light btn-small"><i class="bi bi-pencil"></i>Editar</a>
+                <td><a href="/colaborador/edit/{{this.id}}" >{{> edit_colaborador}}</a></td>
+                <td>
                          <button type="button" onclick="deleteModal({{this.id}})">
                          {{> del_colaborador}}
                          </button>
-                    </td>
+                </td>
+
+                
                 </tr>      
             
         {{/each}} 
