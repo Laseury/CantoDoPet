@@ -1,16 +1,14 @@
-const Pet = require('../model/Pets')
-const Cliente = require('../model/Cliente')
-
+const Pet = require('../model/Pets');
+const Cliente = require('../model/Cliente');
 
 module.exports = class PetController {
-
   static async newPet(req, res) {
     const clientes = await Cliente.findAll({
       attributes: ['id', 'nome', 'sobrenome'],
       raw: true
-  })
+    });
 
-    res.render('pets/petform', {clientes})
+    res.render('pets/petform', { clientes });
   }
 
   static async newPetSave(req, res) {
@@ -21,58 +19,72 @@ module.exports = class PetController {
       nascimento: req.body.nascimento,
       cor: req.body.cor,
       peso: req.body.peso,
-      dono: req.body.dono,
-    }
+      dono: req.body.dono
+    };
 
     await Pet.create(animal)
       .then(() => {
-        this.allPets()
-      }).catch((error) => {
-        console.log(error)
+        this.allPets();
       })
-    res.redirect('/Pets/allPets')
-
+      .catch(error => {
+        console.log(error);
+      });
+    res.redirect('/Pets/allPets');
   }
   static async home(req, res) {
-    res.render('pets/home')
+    res.render('pets/home');
   }
 
   static async allPets(req, res) {
-    const pets = await Pet.findAll({ raw: true })
-    res.render('pets/viewpet', { pets })
+    let pets = await Pet.findAll({ raw: true });
+    const clientes = await Cliente.findAll({ raw: true });
+    let tmpPets = [];
+    pets.forEach(pet => {
+      clientes.forEach(cliente => {
+        if (pet.dono === cliente.id) {
+          pet = { ...pet, donoNome: cliente.nome };
+        }
+      });
+      tmpPets.push(pet);
+    });
+    pets = tmpPets;
+
+    res.render('pets/viewpet', { pets });
   }
 
   static async updatePet(req, res) {
-    const id = req.params.id
-    const pet = await Pet.findOne({ where: { id: id }, raw: true })
-    const cliente = await Cliente.findOne({where: {id: pet.dono}, raw: true})
-    res.render('pets/edit', { pet, cliente })
-
+    const id = req.params.id;
+    const pet = await Pet.findOne({ where: { id: id }, raw: true });
+    const cliente = await Cliente.findOne({
+      where: { id: pet.dono },
+      raw: true
+    });
+    res.render('pets/edit', { pet, cliente });
   }
 
   static async updatePetSave(req, res) {
-    const id = req.body.id
+    const id = req.body.id;
     const pet = {
       nome: req.body.nome,
       especie: req.body.especie,
       raça: req.body.raça,
       nascimento: req.body.nascimento,
       cor: req.body.cor,
-      peso: req.body.peso,
-    }
+      peso: req.body.peso
+    };
     await Pet.update(pet, { where: { id: id } })
       .then(res.redirect('/pets/allPets'))
-      .catch((err) => {
-        console.log(err)
-      })
+      .catch(err => {
+        console.log(err);
+      });
   }
 
   static async removePet(req, res) {
-    const id = req.body.id
+    const id = req.body.id;
     await Pet.destroy({ where: { id: id } })
       .then(res.redirect('/pets/allPets'))
-      .catch((err) => {
-        console.log(err)
-      })
+      .catch(err => {
+        console.log(err);
+      });
   }
-}
+};
