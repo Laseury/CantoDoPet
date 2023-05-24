@@ -43,20 +43,7 @@ module.exports = class servicosController {
   }
 
   static async allServicos(req, res) {
-    let servicos = await Servicos.findAll({ raw: true });
-    const clientes = await Cliente.findAll({ raw: true });
-    let tmpServicos = [];
-
-    servicos.forEach(servico => {
-      clientes.forEach(cliente => {
-        if (servico.dono === cliente.id) {
-          servico = { ...servico, donoNome: cliente.nome };
-        }
-      });
-      tmpServicos.push(servico);
-    });
-    servicos = tmpServicos;
-
+    const servicos = await Servicos.findAll({ raw: true });
     res.render('servicos/servViews', { servicos });
   }
 };
