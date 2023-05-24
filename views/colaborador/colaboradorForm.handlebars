@@ -1,50 +1,88 @@
-<div class="d-flex justify-content-center">
-    <h1 class="center">Cadastrar colaborador</h1>
+<div class="text-center header">
+    <h1 class="text-center header-text">Cadastrar colaborador</h1>
 </div>
-<div class="boxCarro">
+<div class="signup-form">
     <form action="/colaborador/add" class="p-2" method="post">
-        <div class="row mb-2">
-            <label class="col-sm-2 col-form-label">Nome</label>
-            <div class="col-sm-8">
-                <input type="text" class="form-control" name="nome" placeholder="Digite o Nome">
-            </div>
+        <p>Preencha o formulário para cadastrar um colaborador</p>
+        <hr>
+        <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">
+            <span class="fa fa-paw"></span>
+          </span>
         </div>
-        <div class="row mb-2">
-            <label class="col-sm-2 col-form-label">Sobrenome</label>
-            <div class="col-sm-8">
-                <input type="text" class="form-control" name="sobrenome" placeholder="Digite o Sobrenome">
-            </div>
+        <input type="text" class="form-control" name="nome" placeholder="Nome" required="required">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">
+            <i class="fa fa-star"></i>
+          </span>
         </div>
-        <div class="row mb-2">
-            <label class="col-sm-2 col-form-label">Data de Nascimento</label>
-            <div class="col-sm-8">
-                <input type="date" class="form-control" name="dataNascimento">
-            </div>
+        <input type="text" class="form-control" name="sobrenome" placeholder="Digite o Sobrenome" required="required">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">
+            <i class="fa fa-filter"></i>
+          </span>
         </div>
-        <div class="row mb-2">
-            <label class="col-sm-2 col-form-label">CPF</label>
-            <div class="col-sm-8">
-                <input type="text" class="form-control" name="cpf" placeholder="Informe seu CPF">
-            </div>
+        <input type="date" class="form-control" name="dataNascimento" placeholder="Data de nascimento" required="required">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">
+            <i class="fa fa-pencil"></i>
+          </span>
         </div>
-        <div class="row mb-2">
-            <label class="col-sm-2 col-form-label">Função</label>
-            <div class="col-sm-8">
-                <input type="text" class="form-control" name="funcao" placeholder="Informe qual a sua Função">
-            </div>
+        <input type="text" class="form-control" name="cpf" placeholder="CPF do colaborador" required="required">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">
+            <i class="fa fa-heart"></i>
+          </span>
         </div>
-        <div class="row mb-2">
-            <label class="col-sm-2 col-form-label">Usuario</label>
-            <div class="col-sm-8">
-                <input type="text" class="form-control" name="login" placeholder="Crie seu Usuario">
-            </div>
+        <input type="text" class="form-control" name="funcao" placeholder="Função do colaborador" required="required">
+      </div>
+    </div>
+
+        <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">
+            <i class="fa fa-heart"></i>
+          </span>
         </div>
-        <div class="row mb-2">
-            <label class="col-sm-2 col-form-label">Senha</label>
-            <div class="col-sm-8">
-                <input type="text" class="form-control" name="senha" placeholder="Crie sua senha">
-            </div>
+        <input type="text" class="form-control" name="login" placeholder="Crie o usuário do colaborador" required="required">
+      </div>
+    </div>
+
+            <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">
+            <i class="fa fa-heart"></i>
+          </span>
         </div>
-        <input type="submit" value="Cadastrar">
-    </form>
+        <input type="password" class="form-control" name="senha" placeholder="Crie a senha do colaborador" required="required">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <button type="submit" class="btn-form text-center btn-primary btn-lg">Cadastrar</button>
+    </div>
+  </form>
 </div>
