@@ -1,6 +1,5 @@
-const { DataTypes } = require('sequelize')
-const db = require('../db/conn')
-
+const { DataTypes } = require('sequelize');
+const db = require('../db/conn');
 
 const Pet = db.define('Pet', {
   nome: {
@@ -10,7 +9,7 @@ const Pet = db.define('Pet', {
   especie: {
     type: DataTypes.STRING,
     required: true
-  }, 
+  },
   raça: {
     type: DataTypes.STRING,
     required: true
@@ -31,6 +30,6 @@ const Pet = db.define('Pet', {
     type: DataTypes.INTEGER,
     required: true
   }
-})
+});
 
-module.exports = Pet
+module.exports = Pet;

@@ -23,6 +23,7 @@
         <th scope="col">Nascimento</th>
         <th scope="col">Cor</th>
         <th scope="col">Peso</th>
+        <th scope="col">Cliente</th>
         <th scope="col">Editar</th>
         <th scope="col">Deletar</th>
       </tr>
@@ -36,6 +37,8 @@
         <td>{{this.nascimento}}</td>
         <td>{{this.cor}}</td>
         <td>{{this.peso}}</td>
+        <td>{{this.donoNome}}</td>
+    
         <td><a href="/pets/edit/{{this.id}}">{{> edit_pet}}</a></td>
         <td>
           <button type="button" onclick="deleteModal({{this.id}})">

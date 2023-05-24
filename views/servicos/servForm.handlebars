@@ -1,0 +1,25 @@
+<h1>Cadastrar Serviço</h1>
+<form action="/servicos/add" method="post">
+  <input type="text" name="nome" placeholder="Nome do Serviço" />
+  <input type="text" name="valor" placeholder="Digite os Valores"/>
+      <select class="form-control" name="dono" placeholder="Dono do Pet" required="required">
+          <option value="" selected disabled>Selecione o dono do pet:</option>
+          {{#each clientes}}
+            <option value="{{this.id}}">{{this.nome}} {{this.sobrenome}}</option>
+          {{/each}}
+        </select>
+           <select class="form-control" name="pet" placeholder="Selecione o PET" required="required">
+          <option value="" selected disabled>Selecione o pet:</option>
+          {{#each pets}}
+            <option value="{{this.id}}">{{this.nome}} {{this.raca}}</option>
+          {{/each}}
+   </select>
+   <select class="form-control" name="colaborador" placeholder="Selecione o Colaborador" required="required">
+          <option value="" selected disabled>Selecione o Colaborador:</option>
+          {{#each colaborador}}
+            <option value="{{this.id}}">{{this.nome}}</option>
+          {{/each}} 
+          
+    </select>
+      <input type="submit" value="Cadastrar" class="btn"/>
+</form>
