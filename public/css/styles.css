@@ -672,8 +672,3 @@ section .section-title {
     height: 120px;
     border-radius: 50%;
 }
-
-.aviso_404{
-    color: brown;
-    text-decoration: underline;
-  }
