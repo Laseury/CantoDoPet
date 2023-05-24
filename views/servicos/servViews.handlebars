@@ -1,29 +1,7 @@
-<div class=" text-center header">
-  <h1 class="text-center header-text">Serviços contratados</h1>
-</div>
-
-<div class="espaco tabela">
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">Nome do serviço</th>
-        <th scope="col">Valor do serviço</th>
-        <th scope="col">ID Dono</th>
-        <th scope="col">ID Pet</th>
-        <th scope="col">ID Colaborador</th>
-      </tr>
-    </thead>
-    {{#each servicos}}
-    <tbody>
-      <tr>
-        <td>{{this.nome}}</td>
-        <td>{{this.valor}}</td>
-        <td>{{this.dono}}</td>
-        <td>{{this.pet}}</td>
-        <td>{{this.colaborador}}</td>
-      </tr>
-      {{/each}}
-    </tbody>
-  </table>
-</div>
-</form>
+{{#each servicos}}
+<td>{{this.nome}}</td>
+<td>{{this.valor}}</td>
+<td>{{this.dono}}</td>
+<td>{{this.pet}}</td>
+<td>{{this.colaborador}}</td>
+{{/each}}
