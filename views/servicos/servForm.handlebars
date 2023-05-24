@@ -1,25 +1,87 @@
-<h1>Cadastrar Serviço</h1>
-<form action="/servicos/add" method="post">
-  <input type="text" name="nome" placeholder="Nome do Serviço" />
-  <input type="text" name="valor" placeholder="Digite os Valores"/>
-      <select class="form-control" name="dono" placeholder="Dono do Pet" required="required">
+<div class=" text-center header">
+  <h1 class="text-center header-text">Cadastrar Serviço</h1>
+</div>
+
+<div class="signup-form">
+  <form action="/servicos/add" method="post">
+    <p>Preencha o formulário para cadastrar um serviço</p>
+    <hr>
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">
+            <span class="fa fa-pencil"></span>
+          </span>
+        </div>
+        <input type="text" class="form-control" name="nome" placeholder="Nome do Serviço" required="required">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">
+            <i class="fa fa-star"></i>
+          </span>
+        </div>
+        <input type="text" class="form-control" name="valor" placeholder="Digite o valor em R$" required="required">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">
+            <i class="fa fa-user"></i>
+          </span>
+        </div>
+        <select class="form-control" name="dono" placeholder="Dono do Pet" required="required">
           <option value="" selected disabled>Selecione o dono do pet:</option>
           {{#each clientes}}
             <option value="{{this.id}}">{{this.nome}} {{this.sobrenome}}</option>
           {{/each}}
         </select>
-           <select class="form-control" name="pet" placeholder="Selecione o PET" required="required">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">
+            <i class="fa fa-paw"></i>
+          </span>
+        </div>
+        <select class="form-control" name="pet" placeholder="Selecione o Pet" required="required">
           <option value="" selected disabled>Selecione o pet:</option>
           {{#each pets}}
             <option value="{{this.id}}">{{this.nome}} {{this.raca}}</option>
           {{/each}}
-   </select>
-   <select class="form-control" name="colaborador" placeholder="Selecione o Colaborador" required="required">
-          <option value="" selected disabled>Selecione o Colaborador:</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">
+            <i class="fa fa-user"></i>
+          </span>
+        </div>
+        <select class="form-control" name="colaborador" placeholder="Selecione o colaborador" required="required">
+          <option value="" selected disabled>Selecione o colaborador:</option>
           {{#each colaborador}}
             <option value="{{this.id}}">{{this.nome}}</option>
           {{/each}} 
-          
-    </select>
-      <input type="submit" value="Cadastrar" class="btn"/>
-</form>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <button type="submit" class="btn-form text-center btn-primary btn-lg">Cadastrar</button>
+    </div>
+  </form>
+</div>
+
+
+
+
+
